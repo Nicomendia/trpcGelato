@@ -72,6 +72,7 @@ export const trpc = createTRPCNext<AppRouter, SSRContext>({
            * @link https://trpc.io/docs/ssr
            */
           headers() {
+            const apiKey = 'auth token'; // TODO: obtain real token
             if (ctx?.req) {
               // To use SSR properly, you need to forward the client's headers to the server
               // This is so you can pass through things like cookies when we're server-side rendering
@@ -82,9 +83,12 @@ export const trpc = createTRPCNext<AppRouter, SSRContext>({
                 ...headers,
                 // Optional: inform server that it's an SSR request
                 'x-ssr': '1',
+                'X-API-KEY': apiKey,
               };
             }
-            return {};
+            return {
+              'X-API-KEY': apiKey,
+            };
           },
         }),
       ],

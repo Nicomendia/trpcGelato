@@ -2,7 +2,7 @@
  *
  * This is an example router, you can delete this file and then update `../pages/api/trpc/[trpc].tsx`
  */
-import { router, publicProcedure } from '../trpc';
+import { router, publicProcedure, protectedProcedure } from '../trpc';
 import { Prisma } from '@prisma/client';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
@@ -67,7 +67,7 @@ export const postRouter = router({
         nextCursor,
       };
     }),
-  byId: publicProcedure
+  byId: protectedProcedure
     .input(
       z.object({
         id: z.string(),
