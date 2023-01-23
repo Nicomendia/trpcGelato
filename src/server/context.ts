@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as trpc from '@trpc/server';
 import * as trpcNext from '@trpc/server/adapters/next';
 // import { decodeAndVerifyJwtToken } from './somewhere/in/your/app/utils'; // TODO: develop some method to verify the token
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface CreateContextOptions {
   // session: Session | null
   isAllowed: boolean | null;
